@@ -1,0 +1,462 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    font-family: Arial, sans-serif;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.img-house {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: expand 1.5s forwards ease-in-out, move-house-right-resize 1.5s 4s forwards ease-in-out;
+    position: relative;
+    z-index: 1;
+}
+
+.img-house img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.img-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    animation: expand-circle 1.5s 1s forwards ease-in-out, move-top-left 1.5s 4s forwards ease-in-out, disappear 0.5s 5.5s forwards ease-in-out;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.img-circle img {
+    width: 20%;
+    height: 20%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    animation: expand-logo 1s 2.5s forwards ease-in-out, move-top-left 1.5s 4s forwards ease-in-out;
+    z-index: 3;
+}
+
+.logo img {
+    width: 8%;
+    height: 8%;
+    object-fit: contain;
+}
+
+.delayed-content {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 8px;
+    animation: fadeIn 1s forwards ease-in-out;
+}
+
+.enroll-form .heading h1,
+.enroll-form .heading p,
+.enroll-form .form-group,
+.enroll-form .remember-me,
+.enroll-form #login-btn,
+.enroll-form .login-help,
+.enroll-form .footer {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+.enroll-form .heading h1 {
+    animation-delay: 0s;
+}
+
+.enroll-form .heading p {
+    animation-delay: 0.5s;
+}
+
+.enroll-form .form-group {
+    animation-delay: 1s;
+}
+
+.enroll-form .remember-me {
+    animation-delay: 1.5s;
+}
+
+.enroll-form #login-btn {
+    animation-delay: 2s;
+}
+
+.enroll-form .login-help {
+    animation-delay: 2.5s;
+}
+
+.enroll-form .footer {
+    animation-delay: 3s;
+}
+
+.enroll-form {
+    display: none;
+    position: absolute;
+    left: 50px;
+    padding: 20px;
+    z-index: 4;
+}
+
+.enroll-form .heading h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.enroll-form .heading p {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #848383;
+}
+
+.enroll-form .form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgb(200, 198, 198);
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: rgb(25, 158, 25);
+    box-shadow: 0 0 10px rgba(15, 139, 15, 0.5);
+    outline: none;
+}
+
+#toggle-password {
+    position: absolute;
+    right: 25px;
+    top: 44%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #848383;
+    font-size: 12px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid rgb(200, 198, 198);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    background-color: white;
+}
+
+input[type="checkbox"]:checked {
+    background-color: white;
+    border-color: rgb(25, 158, 25);
+}
+
+input[type="checkbox"]:checked::after {
+    content: '✔';
+    color: rgb(25, 158, 25);
+    font-size: 16px;
+    position: absolute;
+    left: 2px;
+    top: -2px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #535252;
+}
+
+#login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(200, 198, 198);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: not-allowed;
+    transition: background-color 0.3s ease;
+}
+
+#login-btn:enabled {
+    cursor: pointer;
+    background-color: rgb(25, 158, 25);
+}
+
+.login-help {
+    text-align: center;
+    margin-top: 15px;
+
+    font-size: 12px;
+}
+
+.login-help a {
+    color: rgb(25, 158, 25);
+    text-decoration: none;
+}
+
+.loader {
+    border: 2px solid white;
+    border-top: 2px solid rgb(25, 158, 25);
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.footer {
+    padding-top: 20px;
+    font-size: 12px;
+    color: rgb(102, 102, 102);
+    text-align: center;
+}
+
+.footer strong {
+    color: rgb(25, 158, 25);
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeInForm {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.show-enroll-form {
+    display: block;
+    animation: fadeInForm 1s ease-in-out forwards;
+}
+
+@keyframes expand-circle {
+    0% {
+        width: 0;
+        height: 0;
+    }
+
+    100% {
+        width: 20vw;
+        height: 20vw;
+    }
+}
+
+@keyframes expand-logo {
+    0% {
+        width: 0;
+        height: 0;
+    }
+
+    100% {
+        width: 20vw;
+        height: 20vw;
+    }
+}
+
+@keyframes move-top-left {
+    0% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    100% {
+        top: -5%;
+        left: -5%;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes expand {
+    0% {
+        width: 0;
+        height: 0;
+    }
+
+    100% {
+        width: calc(100vw - 40px);
+        height: calc(100vh - 40px);
+    }
+}
+
+@keyframes move-house-right {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(200px);
+    }
+}
+
+.img-house {
+    animation: expand 1.5s forwards ease-in-out, move-house-right 1.5s 4s forwards ease-in-out;
+}
+
+@keyframes move-house-right-resize {
+    0% {
+        transform: translateX(0);
+        width: calc(100vw - 40px);
+        height: calc(100vh - 40px);
+    }
+
+    100% {
+        transform: translateX(200px);
+        width: calc(50vw - 20px);
+        height: calc(50vh - 20px);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.img-house.move-right {
+    animation: move-house-right 1.5s forwards ease-in-out 6s;
+}
+
+.show-delayed {
+    display: block;
+    animation: fadeIn 1s ease-in-out 7s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.hide-all-except-logo {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+@keyframes move-to-center {
+    0% {
+        top: -5%;
+        left: -5%;
+        transform: translate(0, 0);
+        width: 20vw;
+        height: 20vw;
+    }
+
+    100% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10vw;
+        height: 10vw;
+    }
+}
+
+@keyframes fadeOutForm {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-out-form {
+    animation: fadeOutForm 1s ease-in-out forwards;
+}
+
+
+@keyframes fadeOutLogo {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+.move-logo-to-center {
+    animation: move-to-center 1.5s ease-in-out forwards;
+}
+
+.fade-out-logo {
+    animation: fadeOutLogo 1s 1.5s forwards;
+}

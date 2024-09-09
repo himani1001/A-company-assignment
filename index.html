@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGIONS Mortgage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="img-house">
+        <img src="https://images.pexels.com/photos/161768/lafayette-park-washington-dc-c-architecture-161768.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="House Image">
+    </div>
+    <div class="img-circle">
+        <img src="file.png" alt="Circle Image">
+    </div>
+    <div class="logo">
+        <img src="mymotrage-logo.png" alt="Logo">
+    </div>
+
+    <div class="enroll-form">
+        <div class="heading">
+            <h1>Welcome Back</h1>
+            <p>Sign in to your Regions MyMortgage Account</p>
+        </div>
+        <form id="login-form">
+            <div class="form-group">
+                <input type="text" id="onlineID" placeholder="Online ID">
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Password">
+                <span id="toggle-password">Show</span>
+            </div>
+            <div class="remember-me">
+                <input type="checkbox" id="remember">
+                <label for="remember">Remember me</label>
+            </div>
+            <button type="button" id="login-btn" disabled>
+                <span class="btn-text">Login</span>
+                <span class="loader" style="display: none;"></span>
+            </button>
+        </form>
+        <div class="login-help">
+            <a href="#">Forgot Online ID?</a> · <a href="#">Forgot Password?</a>
+        </div>
+        <div class="footer">
+            <p>Equal Housing Lender · Member FDIC</p>
+            <p>©2023 Regions Financial Corporation. All Rights Reserved. <strong> · (800) REGIONS </strong></p>
+        </div>
+    </div>
+    <script>
+        setTimeout(function () {
+            document.querySelector('.enroll-form').classList.add('show-enroll-form');
+        }, 6000);
+
+        const onlineID = document.getElementById('onlineID');
+        const password = document.getElementById('password');
+        const togglePassword = document.getElementById('toggle-password');
+        const loginBtn = document.getElementById('login-btn');
+
+        onlineID.addEventListener('input', checkForm);
+        password.addEventListener('input', checkForm);
+
+        function checkForm() {
+            if (onlineID.value !== '' && password.value !== '') {
+                loginBtn.disabled = false;
+                loginBtn.style.cursor = 'pointer'; 
+                loginBtn.style.backgroundColor = 'rgb(25, 158, 25)';
+            } else {
+                loginBtn.disabled = true;
+                loginBtn.style.cursor = 'not-allowed';  
+                loginBtn.style.backgroundColor = 'rgb(200, 198, 198)';
+            }
+
+            if (password.value.length > 0) {
+                togglePassword.style.display = 'inline';
+            } else {
+                togglePassword.style.display = 'none';
+            }
+        }
+        togglePassword.addEventListener('click', function () {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+
+            this.textContent = type === 'password' ? 'Show' : 'Hide';
+        });
+
+        togglePassword.style.display = 'none';
+
+        loginBtn.addEventListener('click', function () {
+            document.querySelector('.loader').style.display = 'inline-block';
+            document.querySelector('.btn-text').style.display = 'none';
+
+            setTimeout(function () {
+                document.querySelector('.loader').style.display = 'none';
+                document.querySelector('.btn-text').style.display = 'inline';
+
+                document.querySelector('.enroll-form').classList.add('fade-out-form');
+
+                setTimeout(function () {
+                    const elementsToHide = document.querySelectorAll('.enroll-form, .img-house, .img-circle');
+                    elementsToHide.forEach(element => {
+                        element.classList.add('hide-all-except-logo');
+                    });
+
+                    const logo = document.querySelector('.logo');
+                    logo.classList.add('move-logo-to-center');
+
+                    setTimeout(() => {
+                        logo.classList.add('fade-out-logo');
+                    }, 1500); 
+                }, 500); 
+            }, 2000); 
+        });
+
+    </script>
+
+</body>
+
+</html>
