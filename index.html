@@ -38,8 +38,8 @@
                 <label for="remember">Remember me</label>
             </div>
             <button type="button" id="login-btn" disabled>
-                <span class="btn-text">Login</span>
-                <span class="loader" style="display: none;"></span>
+                <span class="btn-text"><a href="home.html" target="_blank">Login</a></span>
+                <!-- <span class="loader" style="display: none;"></span> -->
             </button>
         </form>
         <div class="login-help">
@@ -58,7 +58,7 @@
         const onlineID = document.getElementById('onlineID');
         const password = document.getElementById('password');
         const togglePassword = document.getElementById('toggle-password');
-        const loginBtn = document.getElementById('login-btn');
+        // const loginBtn = document.getElementById('login-btn');
 
         onlineID.addEventListener('input', checkForm);
         password.addEventListener('input', checkForm);
@@ -89,31 +89,31 @@
 
         togglePassword.style.display = 'none';
 
-        loginBtn.addEventListener('click', function () {
-            document.querySelector('.loader').style.display = 'inline-block';
-            document.querySelector('.btn-text').style.display = 'none';
+        // loginBtn.addEventListener('click', function () {
+        //     document.querySelector('.loader').style.display = 'inline-block';
+        //     document.querySelector('.btn-text').style.display = 'none';
 
-            setTimeout(function () {
-                document.querySelector('.loader').style.display = 'none';
-                document.querySelector('.btn-text').style.display = 'inline';
+        //     setTimeout(function () {
+        //         document.querySelector('.loader').style.display = 'none';
+        //         document.querySelector('.btn-text').style.display = 'inline';
 
-                document.querySelector('.enroll-form').classList.add('fade-out-form');
+        //         document.querySelector('.enroll-form').classList.add('fade-out-form');
 
-                setTimeout(function () {
-                    const elementsToHide = document.querySelectorAll('.enroll-form, .img-house, .img-circle');
-                    elementsToHide.forEach(element => {
-                        element.classList.add('hide-all-except-logo');
-                    });
+        //         setTimeout(function () {
+        //             const elementsToHide = document.querySelectorAll('.enroll-form, .img-house, .img-circle');
+        //             elementsToHide.forEach(element => {
+        //                 element.classList.add('hide-all-except-logo');
+        //             });
 
-                    const logo = document.querySelector('.logo');
-                    logo.classList.add('move-logo-to-center');
+        //             const logo = document.querySelector('.logo');
+        //             logo.classList.add('move-logo-to-center');
 
-                    setTimeout(() => {
-                        logo.classList.add('fade-out-logo');
-                    }, 1500); 
-                }, 500); 
-            }, 2000); 
-        });
+        //             setTimeout(() => {
+        //                 logo.classList.add('fade-out-logo');
+        //             }, 1500); 
+        //         }, 500); 
+        //     }, 2000); 
+        // });
 
     </script>
 
